@@ -15,6 +15,12 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  Game feel y particulas, feedback de muerte etc.
  arreglar los dos bugs existentes.
  terminar los 3 niveles restantes.
+ Reinicio del gamemanager al pasar de nivel.
+ Que el enemigo no se mueva si el personaje esta muerto.
+ Boton play again reinicia el nivel.
+ Boton Next level te lleva al siguiente.
+ Si un personaje no esta seleccionado se oscurese.
+ EL juego solo funciona una vez por ejecucion porque el gamemanager no se reinicia aun.
  
  como jugar:
  
@@ -24,6 +30,7 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  A para moverlo a la izquierda a menos que halla una pared.
  S para moverlo a la derecha a menos que halla una pared.
  Space para poner una trampa (al colocar la trampa el jugador desaparece).
+ 
  
  Movimiento del enemigo/enemigos:
  los enemigos se moveran a la derecha o izquierda siguiendo el movimiento del jugador.
@@ -37,5 +44,5 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  te quedas sin jugadores y aun hay enemigos en juego.
  Cualquier enemigo toca el final del mapa en la parte inferior.
 
- 
+ No se porque se vuelve loco al ganar o perder y volver al nivel, se destruye el game manager y en el awake le puse un dont destroy on load no se que mas hacer.
  
