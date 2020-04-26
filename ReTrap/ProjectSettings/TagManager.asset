@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Wall
   - Final
+  - Ally
   layers:
   - Default
   - TransparentFX

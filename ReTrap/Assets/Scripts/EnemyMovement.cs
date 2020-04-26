@@ -57,12 +57,12 @@ public class EnemyMovement : MonoBehaviour
 
     public void mirrormovementx()
     {
-        enemytransform.position += new Vector3(newpositionxenemy, -0.86f, 0);
+        enemytransform.position += new Vector3(newpositionxenemy,0, 0);
     }
 
     public void mirrormovementxnegative()
     {
-        enemytransform.position += new Vector3(newpositionxenemy * -1, -0.86f, 0);
+        enemytransform.position += new Vector3(newpositionxenemy * -1,0, 0);
     }
 
     public void mirrormovementynegative()
@@ -76,7 +76,15 @@ public class EnemyMovement : MonoBehaviour
         {
             wallcollition = true;            
         }
+        if (collision.gameObject.tag == "Wall")
+        {
+            wallcollition = true;
+        }
         if (collision.gameObject.tag == "Final")
+        {
+            OnFinalCollider();
+        }
+        if (collision.gameObject.tag == "Ally")
         {
             OnFinalCollider();
         }

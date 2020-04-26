@@ -6,7 +6,6 @@ public class CharacterSkins : MonoBehaviour
 {
 
     public Sprite[] sprites;
-    public SpriteRenderer charSkin;
     private CharacterManager charManager;
 
     void Start()

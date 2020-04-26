@@ -5,13 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // Singleton
+    public static GameManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Atributos
     private string sceneName;
     [SerializeField] private List<EnemyMovement> enemiesInScene = new List<EnemyMovement>();
     private CharacterManager characterManagerInScene;
-    public int RawLevel = 0;
-    public bool finalLevel = false;
-    public int money;
 
     // Accesores
     public CharacterManager CharacterManagerInScene { get => characterManagerInScene; set => characterManagerInScene = value; }
@@ -24,41 +35,19 @@ public class GameManager : MonoBehaviour
         EnemyMovement.OnFinalCollider += Defeat;
         CharacterMovement.OnStateTrap += ActivateComprobationTrap;
         Trap.OnEnemyKill += ComprobateActiveEnemies;
-        money = PlayerPrefs.GetInt("money");
-
-        if (!PlayerPrefs.HasKey("leveltag" + RawLevel))
-        {
-            PlayerPrefs.SetInt("leveltag" + RawLevel, 0);
-        }        
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Victory();
-        }        
+        
     }
     public void Defeat()
     {
-        SceneManager.LoadScene("Levels");
+        SceneManager.LoadScene("OpenMenuScene");
     }
     public void Victory()
     {
-        money += 100;
-        RawLevel += 1;
-        string levelTag = "leveltag" + RawLevel;
-        LevelManager.instance.LevelUnlock(levelTag);
-        PlayerPrefs.SetInt("money", money);
-        PlayerPrefs.Save();
-        if (finalLevel == false)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-        {
-            SceneManager.LoadScene("Levels");
-        }
-         
+        int indexscene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(indexscene + 1);
     } 
     public void ComprobateActiveEnemies()
     {
@@ -77,20 +66,21 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator ComprobateAfterTrap()
     {
-        Debug.Log(CharacterManagerInScene.CharactersInScene.Count);
+        yield return new WaitForSeconds(0.05f);
+        Debug.Log("Todavía hay" + CharacterManagerInScene.CharactersInScene.Count + "Characters en esta escena");
         if (CharacterManagerInScene.CharactersInScene.Count <= 0)
         {
             Debug.Log("Ostras, te has quedao sin characters");
-            yield return new WaitForSeconds(0.2f);
-            if (EnemiesInScene.Count < 1)
-            {
-                Victory();
-            }
-            else
+            yield return new WaitForSeconds(0.09f);
+            Debug.Log("Hay todavía" + EnemiesInScene.Count + "En la Escena");
+            if (EnemiesInScene.Count > 0)
             {
                 Defeat();
             }
         }
+        if (EnemiesInScene.Count < 1)
+        {
+            Victory();
+        }
     }
-
 }

@@ -9,7 +9,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float newpositionx;
     [SerializeField] float newpositiony;
     [SerializeField] GameObject trap;
-    [SerializeField] GameObject characterest;
     [SerializeField] CharacterManager CharManager;
     [SerializeField] Sprite spriteon;
     [SerializeField] Sprite spriteoff;
@@ -18,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
     Vector3 lastpositionplayer;
     private bool selected;
 
-    //Eventos
+    // Eventos
     public delegate void onMouseOver();
     public static event onMouseOver OnMouseOverCharacter;
     public delegate void onStateChange();
@@ -102,8 +101,8 @@ public class CharacterMovement : MonoBehaviour
         GameObject trapclone = Instantiate(trap);        
         trapclone.transform.position = MovementTransform.position;
         CharManager.CharactersInScene.Remove(this);
-        OnStateTrap();
         gameObject.SetActive(false);
+        OnStateTrap();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -126,12 +125,6 @@ public class CharacterMovement : MonoBehaviour
     {
         CharManager.SelectOneCharacter(this);
         OnMouseOverCharacter();
-    }
-
-    public void CharacterSpawn()
-    {
-        GameObject characterrestclone = Instantiate(characterest);
-        Instantiate(characterrestclone, lastpositionplayer, Quaternion.identity);        
     }
     public void callevent1()
     {
