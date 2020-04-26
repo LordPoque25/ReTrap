@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7b164ed317ceb5342af5e7fd27eabadb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newpositionx: 0.762
   newpositiony: 0.762
-  trap: {fileID: 0}
-  CharManager: {fileID: 0}
-  spriteon: {fileID: 21300000, guid: 7b164ed317ceb5342af5e7fd27eabadb, type: 3}
-  spriteoff: {fileID: 21300000, guid: f2642d55293910543959bb1fba7541ca, type: 3}
+  trap: {fileID: 3071157756849344339, guid: 44217df52a8916940a35c7d0fa499889, type: 3}
+  spriteon: {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
+  spriteoff: {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
 --- !u!61 &972489170
 BoxCollider2D:
   m_ObjectHideFlags: 0

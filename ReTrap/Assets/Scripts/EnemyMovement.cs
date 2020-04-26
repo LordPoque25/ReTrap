@@ -15,6 +15,9 @@ public class EnemyMovement : MonoBehaviour
     // Eventos
     public delegate void onCondition();
     public static event onCondition OnFinalCollider;
+    public static event onCondition OnAllyCollision;
+    public delegate void onDeath(EnemyMovement myself);
+    public static event onDeath OnEnemyDeath;
 
     void Start()
     {
@@ -39,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 LastPosition = gameObject.transform.position;
                 mirrormovementxnegative();
+                mirrormovementynegative();
             }
 
 
@@ -46,6 +50,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 LastPosition = gameObject.transform.position;
                 mirrormovementx();
+                mirrormovementynegative();
             }
 
             if (wallcollition == true)
@@ -53,6 +58,11 @@ public class EnemyMovement : MonoBehaviour
                 gameObject.transform.position = LastPosition;
             }
         }     
+    }
+
+    private void OnDestroy()
+    {
+        OnEnemyDeath(this);
     }
 
     public void mirrormovementx()
@@ -76,19 +86,14 @@ public class EnemyMovement : MonoBehaviour
         {
             wallcollition = true;            
         }
-        if (collision.gameObject.tag == "Wall")
-        {
-            wallcollition = true;
-        }
         if (collision.gameObject.tag == "Final")
         {
             OnFinalCollider();
         }
         if (collision.gameObject.tag == "Ally")
         {
-            OnFinalCollider();
+            OnAllyCollision();
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)

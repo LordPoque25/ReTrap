@@ -9,7 +9,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float newpositionx;
     [SerializeField] float newpositiony;
     [SerializeField] GameObject trap;
-    [SerializeField] CharacterManager CharManager;
     [SerializeField] Sprite spriteon;
     [SerializeField] Sprite spriteoff;
     private SpriteRenderer myRenderer;
@@ -22,6 +21,9 @@ public class CharacterMovement : MonoBehaviour
     public static event onMouseOver OnMouseOverCharacter;
     public delegate void onStateChange();
     public static event onStateChange OnStateTrap;
+    public delegate void onmyself(CharacterMovement Myself);
+    public static event onmyself OnMyDeath;
+    public static event onmyself OnMySelection;
 
     // Accesores
     public bool Selected { get => selected; set => selected = value; }
@@ -100,7 +102,7 @@ public class CharacterMovement : MonoBehaviour
     {
         GameObject trapclone = Instantiate(trap);        
         trapclone.transform.position = MovementTransform.position;
-        CharManager.CharactersInScene.Remove(this);
+        OnMyDeath(this);
         gameObject.SetActive(false);
         OnStateTrap();
     }
@@ -111,7 +113,11 @@ public class CharacterMovement : MonoBehaviour
         {
             wallcollitionplayer = true;            
         }
-
+        if (collision.gameObject.tag == "FinalCharCollider")
+        {
+            OnMyDeath(this);
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -123,8 +129,12 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        CharManager.SelectOneCharacter(this);
+        OnMySelection(this);
         OnMouseOverCharacter();
+    }
+    private void OnDestroy()
+    {
+        OnMyDeath(this);
     }
     public void callevent1()
     {

@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Final
   - Ally
+  - FinalCharCollider
   layers:
   - Default
   - TransparentFX
