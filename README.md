@@ -19,6 +19,7 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  Que el enemigo no se mueva si el personaje esta muerto.
  Boton play again reinicia el nivel.
  Boton Next level te lleva al siguiente.
+ Si un personaje no esta seleccionado se oscurese.
  
  como jugar:
  
