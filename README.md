@@ -44,5 +44,5 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  te quedas sin jugadores y aun hay enemigos en juego.
  Cualquier enemigo toca el final del mapa en la parte inferior.
 
- 
+ No se porque se vuelve loco al ganar o perder y volver al nivel, si sabe porque le imploro me ayude porque le e movido todo.
  
