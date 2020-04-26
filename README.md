@@ -20,6 +20,7 @@ se ajusto el movimiento que presentaba un problema de colisiones debido a que us
  Boton play again reinicia el nivel.
  Boton Next level te lleva al siguiente.
  Si un personaje no esta seleccionado se oscurese.
+ EL juego solo funciona una vez por ejecucion porque el gamemanager no se reinicia aun.
  
  como jugar:
  
