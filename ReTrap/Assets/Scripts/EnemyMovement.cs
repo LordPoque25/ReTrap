@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
     private bool wallcollition;
     private bool canMove = false;
     Vector3 LastPosition;
+    Vector3 actualPosition;
+    [SerializeField] ParticleSystem blood;
 
     // Eventos
     public delegate void onCondition();
@@ -30,6 +32,10 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+
+
+        actualPosition = transform.position;
+
         if (canMove)
         {
             if (Input.GetKeyDown(KeyCode.W) && wallcollition == false)
@@ -62,6 +68,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        blood.transform.position = actualPosition;
+        blood.Play();
         OnEnemyDeath(this);
     }
 

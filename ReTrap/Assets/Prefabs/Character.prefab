@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 199806803}
   - component: {fileID: 972489170}
   - component: {fileID: 972489169}
+  - component: {fileID: 5965944403374822863}
   m_Layer: 0
   m_Name: Character
   m_TagString: Ally
@@ -99,6 +100,7 @@ MonoBehaviour:
   trap: {fileID: 3071157756849344339, guid: 44217df52a8916940a35c7d0fa499889, type: 3}
   spriteon: {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
   spriteoff: {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
+  humo: {fileID: 0}
 --- !u!61 &972489170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +148,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5965944403374822863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972489168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6690e37ce96123478d7cdf061d0d3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: e03864ba75b039844bab2987dabfe11c, type: 3}
+  - {fileID: 21300000, guid: e65efe0838de2cb49993bfae37e04dcc, type: 3}
+  - {fileID: 21300000, guid: 2f637df5b5d018940a68f4721fb96e4a, type: 3}
+  - {fileID: 21300000, guid: f35c57f1391d7d548922073b651c89fe, type: 3}
+  - {fileID: 21300000, guid: 3a87e5f28d1faeb43a9f5308d17a48e8, type: 3}
+  - {fileID: 21300000, guid: 86b222ad08847054882eaf6e7421544e, type: 3}

@@ -17,21 +17,21 @@ public class SkinChange : MonoBehaviour
 
     public void CambiarSprite(int skin)
     {
-        if (skin == 1)
+        if (skin == 0)
         {
             for (int i = 0; i < spriteRenderers.Count; i++)
             {
                 spriteRenderers[i].sprite = Skin1;
             }
         }
-        if (skin == 2)
+        if (skin == 1)
         {
             for (int i = 0; i < spriteRenderers.Count; i++)
             {
                 spriteRenderers[i].sprite = Skin2;
             }
         }
-        if (skin == 3)
+        if (skin == 2)
         {
             for (int i = 0; i < spriteRenderers.Count; i++)
             {

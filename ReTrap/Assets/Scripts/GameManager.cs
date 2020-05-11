@@ -21,14 +21,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
 
-        if (instance != null)
+        if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
         }
         else
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
         }
             
         haventwonorlostyet();
@@ -45,6 +44,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+
     }
     public void LookForEnemiesAndAllies()
     {
@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
     {
         if (VictoryBug==false)
         {
-            /*SceneManager.LoadScene("OpenMenuScene");*/
             StartCoroutine(SceneAfterGameplay(2));
             VictoryBug = true;
         }
@@ -75,8 +74,6 @@ public class GameManager : MonoBehaviour
     {
         if (VictoryBug==false)
         {
-            /*int indexscene = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(indexscene + 1);*/
             StartCoroutine(SceneAfterGameplay(1));
             VictoryBug = true;
         }

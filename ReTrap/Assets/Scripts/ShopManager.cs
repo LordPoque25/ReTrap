@@ -7,7 +7,6 @@ public class ShopManager : MonoBehaviour
 {
 
     public int actualMoney;
-    public int price = 100;
     public Text moneyUI;
 
     void Start()
@@ -25,14 +24,11 @@ public class ShopManager : MonoBehaviour
     }
 
     public void Buy(int Item)
-    {        
-        if (price <= actualMoney)
-        {
-            PlayerPrefs.SetInt("skin", Item);
-            actualMoney -= price;
-            PlayerPrefs.SetInt("money", actualMoney);
-            PlayerPrefs.Save();
-        }
+    {
+        PlayerPrefs.SetInt("skin", Item);
+        Debug.Log("compre la skin " + Item);
+        PlayerPrefs.Save();
+        Debug.Log("e comprado una skin");
     }
 
 }

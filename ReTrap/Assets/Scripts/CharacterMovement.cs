@@ -11,9 +11,11 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] GameObject trap;
     [SerializeField] Sprite spriteon;
     [SerializeField] Sprite spriteoff;
+    [SerializeField] ParticleSystem humo;
     private SpriteRenderer myRenderer;
     private bool wallcollitionplayer;
     Vector3 lastpositionplayer;
+    Vector3 Actualposition;
     private bool selected;
 
     // Eventos
@@ -42,6 +44,8 @@ public class CharacterMovement : MonoBehaviour
     
     void Update()   {
 
+        Actualposition = transform.position;
+
         if (Selected)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -64,6 +68,8 @@ public class CharacterMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                humo.transform.position = Actualposition;
+                humo.Play();
                 trapspawn();
             }
 
@@ -102,7 +108,7 @@ public class CharacterMovement : MonoBehaviour
     {
         GameObject trapclone = Instantiate(trap);        
         trapclone.transform.position = MovementTransform.position;
-        OnMyDeath(this);
+        //OnMyDeath(this);
         gameObject.SetActive(false);
         OnStateTrap();
     }
@@ -115,8 +121,8 @@ public class CharacterMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "FinalCharCollider")
         {
-            OnMyDeath(this);
-            Destroy(gameObject);
+            //OnMyDeath(this);
+            gameObject.SetActive(false);
         }
     }
 
